@@ -1,0 +1,91 @@
+{
+  "name": "pu_meet",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint --fix .",
+    "format": "prettier ./**/*.{js,jsx,ts,tsx,css,scss,md,json} --config ./.prettierrc --write",
+    "formatmd": "prettier --write",
+    "success-message": "echo \n\n\n🚀  Everything is awesome. 🚀\n\n🖥️  Auto checking completed, ready to deploy.🖥️\n\n☁️  Run: git push ☁️",
+    "export": "next export",
+    "deploy": "npm run build && npm run export"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/lab": "^5.0.0-alpha.88",
+    "@mui/material": "^5.8.6",
+    "@mui/system": "^5.8.6",
+    "axios": "^0.27.2",
+    "bootstrap": "^5.2.0",
+    "js-cookie": "^3.0.1",
+    "next": "12.2.0",
+    "react": "18.2.0",
+    "react-app-polyfill": "^3.0.0",
+    "react-bootstrap": "^2.5.0",
+    "react-chartjs-2": "^4.2.0",
+    "react-dom": "18.2.0",
+    "react-headless-notifier": "^0.1.6",
+    "react-router-dom": "^6.4.5",
+    "sass": "^1.53.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.5.4",
+    "@commitlint/cli": "^17.1.2",
+    "@types/node": "18.0.0",
+    "@types/react": "18.0.14",
+    "@types/react-dom": "18.0.5",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "12.2.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.4",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^13.0.3",
+    "postcss": "^8.4.19",
+    "prettier": "^2.7.1",
+    "tailwindcss": "^3.2.4",
+    "typescript": "4.7.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "npm run success-message",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,html}": [
+      "npm run lint",
+      "npm run format"
+    ],
+    "*.{md}": [
+      "npm run formatmd"
+    ]
+  },
+  "commitlint": {
+    "rules": {
+      "references-empty": [
+        2,
+        "always"
+      ]
+    },
+    "parserPreset": {
+      "parserOpts": {
+        "issuePrefixes": [
+          "ISSUE-"
+        ]
+      }
+    }
+  }
+}
